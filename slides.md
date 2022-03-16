@@ -52,13 +52,13 @@ layout: quote
       <a href="#" @click="$slidev.nav.go(30)" data-text="混合模式">混合模式</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(36)" data-text="倒影">倒影</a>
+      <a href="#" @click="$slidev.nav.go(37)" data-text="倒影">倒影</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(40)" data-text="其他">其他</a>
+      <a href="#" @click="$slidev.nav.go(42)" data-text="其他">其他</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(45)" data-text="资源">资源</a>
+      <a href="#" @click="$slidev.nav.go(49)" data-text="资源">资源</a>
     </li>
   </ul>
 </section>
@@ -893,6 +893,8 @@ html.dark .loading-text-in-ring-text {
 
 # backdrop-filter 实现玻璃效果
 
+&nbsp;
+
 <div>
   <div class="loading-glass-circle">
     <span></span>
@@ -950,6 +952,8 @@ html.dark .loading-text-in-ring-text {
 ---
 
 # backdrop-filter 实现loading
+
+&nbsp;
 
 <div style="margin-bottom: 60px;">
   <div class="loading-glass-circle-2">
@@ -1126,7 +1130,7 @@ layout: quote
 .lighten-icon {
   display: block;
   width: 100px; height: 100px;
-  background: url(./css.png);
+  background: url(/css.png);
   background-size: 100%;
   background-blend-mode: lighten;
   background-color: red; 
@@ -1136,7 +1140,7 @@ layout: quote
 
 ---
 
-# screen 实现图片混合
+# screen 实现图片、视频混合
 
 <div class="blend-mode-demo">
   <div class="blend-mode-screen-bg">
@@ -1156,7 +1160,7 @@ layout: quote
 .blend-mode-screen-bg {
   height: 400px;
   width: 225px;
-  background: url(./blend-mode-school.jpg);
+  background: url(/blend-mode-school.jpg);
 }
 .blend-mode-screen {
   height: 400px;
@@ -1165,15 +1169,15 @@ layout: quote
   animation: blend-mode-screen-change 8s linear infinite;
 }
 @keyframes blend-mode-screen-change {
-  0%,100% { background: url(./blend-mode-snow.jpg); }
-  25% { background: url(./blend-mode-diffuse.jpg); }
-  50% { background: url(./blend-mode-rains.jpg); }
-  75% { background: url(./blend-mode-bright.jpg); }
+  0%,100% { background: url(/blend-mode-snow.jpg); }
+  25% { background: url(/blend-mode-diffuse.jpg); }
+  50% { background: url(/blend-mode-rains.jpg); }
+  75% { background: url(/blend-mode-bright.jpg); }
 }
 .blend-mode-screen-video-bg {
   height: 400px;
   width: 225px;
-  background: url(./blend-mode-school.jpg);
+  background: url(/blend-mode-school.jpg);
 }
 </style>
 
