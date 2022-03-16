@@ -1047,7 +1047,7 @@ layout: quote
 
 
 ---
-layout: 其他
+layout: quote
 ---
 
 # 其他
