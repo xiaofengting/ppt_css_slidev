@@ -6,15 +6,17 @@ download: true
 title: CSS特性
 ---
 
-# CSS 滤镜、混合模式
+# CSS 视觉表现
 
 &nbsp;
 
-CSS 特性
+CSS 滤镜、混合模式、倒影
 
 &nbsp;
 
                               ———— 贺晋飞
+
+
 
 
 
@@ -47,16 +49,16 @@ layout: quote
       <a href="#" @click="$slidev.nav.go(4)" data-text="滤镜">滤镜</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(14)" data-text="混合模式">混合模式</a>
+      <a href="#" @click="$slidev.nav.go(30)" data-text="混合模式">混合模式</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(24)" data-text="倒影">倒影</a>
+      <a href="#" @click="$slidev.nav.go(36)" data-text="倒影">倒影</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(34)" data-text="其他">其他</a>
+      <a href="#" @click="$slidev.nav.go(40)" data-text="其他">其他</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(34)" data-text="资源">资源</a>
+      <a href="#" @click="$slidev.nav.go(45)" data-text="资源">资源</a>
     </li>
   </ul>
 </section>
@@ -134,7 +136,6 @@ layout: quote
 
 | 滤镜                                  | 释义     |
 | ------------------------------------- | -------- |
-| filter: blur(5px)                     | 高斯模糊 |
 | filter: opacity(25%)                  | 透明度   |
 | filter: brightness(1.4)               | 亮度     |
 | filter: contrast(200%)                | 对比度   |
@@ -143,49 +144,24 @@ layout: quote
 | filter: invert(75%)                   | 反相     |
 | filter: grayscale(50%)                | 灰度     |
 | filter: sepia(60%)                    | 褐色     |
+| filter: blur(5px)                     | 高斯模糊 |
 | filter: drop-shadow(4px 4px 8px blue) | 投影     |
 
 
 ---
 
-<img src="/filter-img.jpg">
+# opacity
 
+透明度
 
----
-
-# 高斯模糊
-
-<img class="filter-blur" src="/filter-img.jpg">
-
-
-<style>
-.filter-blur {
-  width: 80%;
-  animation: filter-blur 5s linear infinite alternate;
-}
-@keyframes filter-blur {
-  0% {
-    filter: blur(0)
-  }
-  100% {
-    filter: blur(50px)
-  }
-}
-</style>
-
-
----
-
-# 透明度
-
-&nbsp;
+参数： 0 - 1 的数字
 
 <img class="filter-opacity" src="/filter-img.jpg">
 
 <style>
 .filter-opacity {
-  width: 80%;
-  animation: filter-opacity 5s linear infinite alternate;
+  width: 60%;
+  animation: filter-opacity 3s linear infinite alternate;
 }
 @keyframes filter-opacity {
   0% {
@@ -212,13 +188,17 @@ layout: quote
 
 ---
 
-# 亮度
+# brightness
+
+亮度
+
+参数：数字，低于 1 变暗，大于 1 变亮。
 
 <img class="filter-brightness" src="/filter-img.jpg">
 
 <style>
 .filter-brightness {
-  width: 80%;
+  width: 60%;
   animation: filter-brightness 5s linear infinite alternate;
 }
 @keyframes filter-brightness {
@@ -232,17 +212,65 @@ layout: quote
 </style>
 
 
+---
+
+# brightness 实现图标变色
+
+&nbsp;
+
+1. 适应黑夜模式。
+
+<i class="brightness-ui-button brightness-icon-delete"></i>
+
+<style>
+html.dark .brightness-ui-button {
+  filter: brightness(100);
+}
+.brightness-icon-delete {
+  display: inline-block;
+  width: 18px; height: 18px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cpath d='M382.32 405.358v384a20.626 20.626 0 0 1-21.577 21.284h-43.3a20.626 20.626 0 0 1-21.578-21.357v-384A20.626 20.626 0 0 1 317.443 384h43.154a20.626 20.626 0 0 1 21.577 21.358h.073zm172.91 0v384a20.626 20.626 0 0 1-21.65 21.284h-43.155a20.626 20.626 0 0 1-21.577-21.357v-384A20.626 20.626 0 0 1 490.425 384h43.155a20.626 20.626 0 0 1 21.577 21.358zm172.91 0v384a20.626 20.626 0 0 1-21.65 21.284h-43.155a20.626 20.626 0 0 1-21.577-21.357l-.073-384A20.626 20.626 0 0 1 663.262 384h43.227a20.626 20.626 0 0 1 21.578 21.358zm86.381 482.67V256H209.484v631.954a74.825 74.825 0 0 0 14.482 45.056c3.365 3.804 5.778 5.632 7.095 5.632h561.883c1.317 0 3.657-1.828 7.095-5.632a74.825 74.825 0 0 0 14.556-44.983zM360.743 170.641h302.519l-32.402-77.97a19.017 19.017 0 0 0-11.484-7.314H405.287a19.017 19.017 0 0 0-11.483 7.314l-33.06 77.97zM987.431 192v42.642A20.626 20.626 0 0 1 965.854 256h-64.878v631.954c0 36.937-10.532 68.755-31.744 95.744-21.211 26.844-46.592 40.302-76.288 40.302H231.061c-29.696 0-55.15-13.02-76.288-38.985-21.212-26.039-31.744-57.49-31.744-94.354V256H58.15a20.626 20.626 0 0 1-21.577-21.358V192a20.626 20.626 0 0 1 21.577-21.358h208.677L314.15 59.32c6.73-16.457 18.871-30.428 36.425-41.984C368.131 5.778 385.977 0 403.971 0h216.064c17.993 0 35.84 5.778 53.394 17.335 17.554 11.556 29.696 25.6 36.425 41.984l47.323 111.323h208.677A20.626 20.626 0 0 1 987.431 192z' fill='%234c5161'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  vertical-align: -4px;
+  margin-right: 5px;
+}
+</style>
+
+2. 实现图标高亮效果。
+
+<a class="brightness-button">🍋</a>
+
+
+<style>
+.brightness-button {
+  padding: 0.5em 0.5em;
+  background: #E0E0E0;
+  border-radius: 3px;
+}
+.brightness-button:hover {
+  cursor: pointer;
+  border-radius: 3px;
+  filter: brightness(110%) saturate(140%);
+}
+</style>
+
 
 ---
 
-# 对比度
+# contrast
+
+对比度
+
+参数：数字，低于 1 降低对比度，大于 1 增加对比度。  
+为 0 时为完全灰色。
+
 
 <img class="filter-contrast" src="/filter-img.jpg">
 
 
 <style>
 .filter-contrast {
-  width: 80%;
+  width: 60%;
   animation: filter-contrast 5s linear infinite alternate;
 }
 @keyframes filter-contrast {
@@ -259,14 +287,19 @@ layout: quote
 
 ---
 
-# 饱和度
+# saturate
+
+饱和度
+
+参数：数字，低于 1 降低饱和度，大于 1 增加饱和度。  
+为 0 时为黑白图像。
 
 <img class="filter-saturate" src="/filter-img.jpg">
 
 
 <style>
 .filter-saturate {
-  width: 80%;
+  width: 60%;
   animation: filter-saturate 5s linear infinite alternate;
 }
 @keyframes filter-saturate {
@@ -284,14 +317,19 @@ layout: quote
 
 ---
 
-# 色调变化
+# hue-rotate
+
+色调变化
+
+参数：角度，单位deg、turn。  
+会模360。
 
 <img class="filter-hue-rotate" src="/filter-img.jpg">
 
 
 <style>
 .filter-hue-rotate {
-  width: 80%;
+  width: 60%;
   animation: filter-hue-rotate 5s linear infinite alternate;
 }
 @keyframes filter-hue-rotate {
@@ -306,6 +344,32 @@ layout: quote
 
 
 
+---
+
+# hue-rotate 实现彩色字
+
+<p class="color-font">这是一行彩色文字</p>
+
+<style>
+@keyframes color-font-text {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+.color-font {
+  height: 160px;
+  line-height: 160px;
+  font-size: 60px;
+  animation: color-font-text 3s linear infinite alternate;
+  background-image: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+</style>
 
 ---
 
@@ -370,14 +434,18 @@ html.dark .loading-glow-ring::before {
 
 ---
 
-# 反相
+# invert
+
+反相
+
+参数： 0 - 1 的数字
 
 <img class="filter-invert" src="/filter-img.jpg">
 
 
 <style>
 .filter-invert {
-  width: 80%;
+  width: 60%;
   animation: filter-invert 5s linear infinite alternate;
 }
 @keyframes filter-invert {
@@ -393,14 +461,20 @@ html.dark .loading-glow-ring::before {
 
 ---
 
-# 灰度
+# grayscale
+
+灰度
+
+参数： 0 - 1 的数字。  
+为 1 时，完全为灰色图像。
+
 
 <img class="filter-grayscale" src="/filter-img.jpg">
 
 
 <style>
 .filter-grayscale {
-  width: 80%;
+  width: 60%;
   animation: filter-grayscale 5s linear infinite alternate;
 }
 @keyframes filter-grayscale {
@@ -418,21 +492,28 @@ html.dark .loading-glow-ring::before {
 
 # grayscale 实现灰色调
 
-如清明节的时候，很多网站会换成灰色调。
+&nbsp;
 
+1. 如清明节的时候，知乎等很多网站首页会换成灰色调。
 
+2. 也可用于禁用按钮。
 
 
 ---
 
-# 褐色
+# sepia
+
+褐色
+
+参数： 0 - 1 的数字。  
+为 1 时，完全为棕褐色图像。
 
 <img class="filter-sepia" src="/filter-img.jpg">
 
 
 <style>
 .filter-sepia {
-  width: 80%;
+  width: 60%;
   animation: filter-sepia 5s linear infinite alternate;
 }
 @keyframes filter-sepia {
@@ -448,7 +529,102 @@ html.dark .loading-glow-ring::before {
 
 ---
 
+# 为图像增加滤镜
+
+&nbsp;
+
+以上都是简单的滤镜，通过矩阵变换，得到最终的矩阵即可。
+
+高斯模糊 blur 和 投影 drop-shadow 是更复杂的算法。
+
+
+[CSSgram](https://una.im/CSSgram)
+
+
+---
+
+# blur
+
+高斯模糊
+
+参数：半径，高斯函数的标准偏差值，值越大越模糊。
+
+
+<img class="filter-blur" src="/filter-img.jpg">
+
+
+<style>
+.filter-blur {
+  width: 60%;
+  animation: filter-blur 5s linear infinite alternate;
+}
+@keyframes filter-blur {
+  0% {
+    filter: blur(0)
+  }
+  100% {
+    filter: blur(50px)
+  }
+}
+</style>
+
+
+---
+
+# blur 实现滴水效果
+
+&nbsp;
+
+复制本样式到外层元素，如body：`filter: blur(3px) contrast(10);`
+
+<div class="blur-drop-water">hello world</div>
+
+<style>
+.blur-drop-water {
+  position: relative;
+  width: 640px;
+  height: 106px;
+  color: #fff;
+  font-size: 124px;
+  text-align: center;
+  margin: 100px auto;
+  border-bottom: 10px solid #fff;
+  transform: skewY(5deg);
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    bottom : -20px;
+    left: 0;
+    width: 10px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translate(0, 0);
+    animation: blur-drop-water-move 7.5s ease-in-out infinite;
+  }
+  &::after {
+    animation: blur-drop-water-move 7.5s ease-in-out 1s infinite;
+  }
+}
+@keyframes blur-drop-water-move {
+  80% {        
+    bottom : -30px;
+    transform: translate(623px, 0);
+  } 93% {
+    transform: translate(623px, 3px);
+    opacity: 1;
+  } 100% {
+    transform: translate(623px, 150px);
+    opacity: 0;
+  }
+}
+</style>
+
+---
+
 # drop-shadow
+
 投影
 
 `filter: drop-shadow(x偏移, y偏移, 模糊大小, 色值);`
@@ -713,7 +889,6 @@ html.dark .loading-text-in-ring-text {
 [can i use](https://caniuse.com/?search=backdrop-filter)
 
 
-
 ---
 
 # backdrop-filter 实现玻璃效果
@@ -749,6 +924,9 @@ html.dark .loading-text-in-ring-text {
   background:#5989ff;
   border-radius: 50%;
   animation: loading-glass-circle-one ease-in-out 2s infinite;
+}
+.loading-glass-circle span:nth-child(1) {
+  /* filter: blur(10px); */
 }
 .loading-glass-circle span:nth-child(2) {
   background-color: rgba(56, 109, 241, 0.05);
@@ -848,9 +1026,156 @@ layout: quote
 
 ---
 
-# `<blend-mode>`
+# mix-blend-mode
+
+元素的内容与元素的直系父元素的内容和元素的背景如何混合。
+
+和滤镜一样，是 PS 中十分强大的功能之一。
+
+[can i use](https://caniuse.com/?search=mix-blend-mode)
+
+[混色模式取值说明](https://developer.mozilla.org/zh-CN/docs/Web/CSS/blend-mode)
+
+---
+
+| 取值                         | 含义     |
+| ---------------------------- | -------- |
+| mix-blend-mode: normal;      | 正常     |
+| mix-blend-mode: multiply;    | 正片叠底 |
+| mix-blend-mode: screen;      | 滤色     |
+| mix-blend-mode: overlay;     | 叠加     |
+| mix-blend-mode: darken;      | 变暗     |
+| mix-blend-mode: lighten;     | 变亮     |
+| mix-blend-mode: color-dodge; | 颜色减淡 |
+| mix-blend-mode: color-burn;  | 颜色加深 |
+| mix-blend-mode: hard-light;  | 强光     |
+| mix-blend-mode: soft-light;  | 柔光     |
+| mix-blend-mode: difference;  | 差值     |
+| mix-blend-mode: exclusion;   | 排除     |
+| mix-blend-mode: hue;         | 色相     |
+| mix-blend-mode: saturation;  | 饱和度   |
+| mix-blend-mode: color;       | 颜色     |
+| mix-blend-mode: luminosity;  | 亮度     |
 
 
+---
+
+# difference 实现文字颜色反色
+
+&nbsp;
+
+<div class="difference-box">
+  <div>difference 实现文字颜色反色</div>
+</div>
+
+<style>
+.difference-box {
+  position: absolute;
+  overflow: hidden;
+  isolation: isolate;
+  margin-top: 60px;
+}
+.difference-box div {
+  margin: 0;
+  mix-blend-mode: difference;
+  font-size: 300%;
+  color: #fff;
+  line-height: 60px;
+  position: relative;
+  z-index: 1;
+}
+.difference-box::before {
+  content: '';
+  position: absolute;
+  width: 100vw; height: 100vw;
+  left: calc(50% - 50vw); top: calc(50% - 50vw);
+  margin: auto;
+  background: linear-gradient(#fff 50%, #000 50%);
+  animation: difference-spin 5s linear infinite;
+}
+@keyframes difference-spin {
+  from { transform: rotate(0deg); }
+  to   {  transform: rotate(360deg); }
+}
+</style>
+
+---
+
+# background-blend-mode
+
+背景的混合模式
+
+取值与 mix-blend-mode 相同。
+
+[can i use](https://caniuse.com/?search=background-blend-mode)
+
+
+---
+
+# lighten 实现变色png
+
+&nbsp;
+
+背景颜色和背景图片的混合。
+
+打开开发者工具，修改 background-color
+
+<i class="lighten-icon"></i>
+
+<style>
+.lighten-icon {
+  display: block;
+  width: 100px; height: 100px;
+  background: url(./css.png);
+  background-size: 100%;
+  background-blend-mode: lighten;
+  background-color: red; 
+}
+</style>
+
+
+---
+
+# screen 实现图片混合
+
+<div class="blend-mode-demo">
+  <div class="blend-mode-screen-bg">
+    <div class="blend-mode-screen"></div>
+  </div>
+  <div class="blend-mode-screen-video-bg">
+    <video width="225" height="400" autoplay="" preload="auto" loop="" webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-orientation="portraint" x5-video-player-fullscreen="true" src="/blend-mode-fire.mp4" style="display:block;mix-blend-mode:screen;"></video>
+  </div>
+</div>
+
+<style>
+.blend-mode-demo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.blend-mode-screen-bg {
+  height: 400px;
+  width: 225px;
+  background: url(./blend-mode-school.jpg);
+}
+.blend-mode-screen {
+  height: 400px;
+  width: 225px;
+  mix-blend-mode: screen;
+  animation: blend-mode-screen-change 8s linear infinite;
+}
+@keyframes blend-mode-screen-change {
+  0%,100% { background: url(./blend-mode-snow.jpg); }
+  25% { background: url(./blend-mode-diffuse.jpg); }
+  50% { background: url(./blend-mode-rains.jpg); }
+  75% { background: url(./blend-mode-bright.jpg); }
+}
+.blend-mode-screen-video-bg {
+  height: 400px;
+  width: 225px;
+  background: url(./blend-mode-school.jpg);
+}
+</style>
 
 
 ---
@@ -864,11 +1189,25 @@ layout: quote
 
 # -webkit-box-reflect
 
-创建倒影
+倒影
 
 非标准属性，-webkit- 内核的浏览器支持。
 
+格式：`dirrection offset mask-box-image`
+
+dirrection：倒影位置：above、below、right、left  
+offset：倒影的距离。  
+mask-box-image：用于反射的蒙版。
+
+
 [can i use](https://caniuse.com/?search=-webkit-box-reflect)
+
+
+---
+
+# -webkit-box-reflect 用途
+
+&nbsp;
 
 [巧用倒影](https://github.com/chokcoco/iCSS/issues/100)
 
@@ -934,7 +1273,7 @@ layout: quote
   justify-content: center;
   align-items: center;
   width: calc(100% + 300px);
-  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+  -webkit-box-reflect: below -10px linear-gradient(transparent, #0004);
   animation: loading-cube-climb-boxmove 1.5s ease-in-out infinite;
 }
 .loading-climb-box .loading-climb-cube {
@@ -1055,52 +1394,131 @@ layout: quote
 
 ---
 
-# attr()
+# conic-gradient()
 
-获取选择到的元素的某一HTML属性值
+圆锥渐变
 
-实验中的功能。  
-目前仅支持作为字符串，用于伪元素的 content 属性。
+除了 IE 都支持。
 
-[can i use](https://caniuse.com/css-gencontent)
+[can i use](https://caniuse.com/?search=conic-gradient)
 
-可以作为一种 tooltip 的实现。
+参数同 径向渐变 radial-gradient()、线形渐变 linear-gradient()
 
-<p data-title="这里是很长的一段提示。这里是很长的一段提示。这里是很长的一段提示。这里是很长的一段提示" class="title-after">悬浮查看提示</p>
 
-<style scoped>
-.title-after {
-  position: relative;
-}
-.title-after:hover::after {
-  content: attr(data-title);
-  font-size: 14px;
-  position: absolute;
-  z-index: 1;
-  top: 24px;
-  left: 0;
-  max-width: 160px;
-  padding: 12px;
-  border: 1px #aaa solid;
-  border-radius: 10px;
-  background-color: #ffc;
-}
-html.dark .title-after:hover::after {
-  color: #000;
+--- 
+
+# conic-gradient() 实现饼状图
+
+
+<div class="conic-gradient-pie"></div>
+
+<style>
+.conic-gradient-pie {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: conic-gradient( 
+      red 6deg, orange 6deg 18deg, yellow 18deg 45deg, 
+      green 45deg 110deg, blue 110deg 200deg, purple 200deg);
 }
 </style>
 
 
 ---
 
-# conic-gradient()
+# -webkit-background-clip
 
-圆锥渐变
+背景裁剪。
+
+值：border-box、padding-box、content-box、text
+
+[can i use](https://caniuse.com/?search=%20-webkit-background-clip)
+
+<div @click="$slidev.nav.go(13)">案例：彩色字</div>
 
 
+---
+
+# clip-path
+
+裁剪
+
+兼容性较好的取值：  
+basic-shape类：inset()、circle()、ellipse()、polygon()、path()
 
 
+[can i use](https://caniuse.com/mdn-css_properties_clip-path_basic_shape)
 
+
+---
+
+# clip-path 显示多边形
+
+<div class="clip-path-polygon-animate"></div>
+
+
+<style>
+.clip-path-polygon-animate {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: crimson;
+  transition: .3s;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%);
+  animation: clip-path-polygon-ani 10s linear infinite alternate;
+}
+@keyframes clip-path-polygon-ani {
+  10% {
+      background-color: darkorange;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%, 0% 50%, 0% 50%, 0% 50%, 0% 50%, 0% 50%);
+  }
+  14% {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%, 0% 50%, 0% 50%, 0% 50%, 0% 50%, 0% 50%);
+  }
+  24% {
+      background-color: lemonchiffon;
+      clip-path: polygon(100% 38%, 82% 100%, 82% 100%, 18% 100%, 0% 38%, 0% 38%, 0% 38%, 0% 38%, 50% 0%);
+  }
+  28% {
+      clip-path: polygon(100% 38%, 82% 100%, 82% 100%, 18% 100%, 0% 38%, 0% 38%, 0% 38%, 0% 38%, 50% 0%);
+  }
+  38% {
+      background-color: darkturquoise;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 100% 75%, 50% 100%, 0% 75%, 0% 75%, 0% 25%, 0% 25%);
+  }
+  42% {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 100% 75%, 50% 100%, 0% 75%, 0% 75%, 0% 25%, 0% 25%);
+  }
+  52% {
+      background-color: darkcyan;
+      clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 25% 100%, 0% 60%, 10% 20%, 50% 0%);
+  }
+  56% {
+      clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 25% 100%, 0% 60%, 10% 20%, 50% 0%);
+  }
+  66% {
+      background-color: deepskyblue;
+      clip-path: polygon(30% 0%, 70% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  }
+  70% {
+      clip-path: polygon(30% 0%, 70% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  }
+  80% {
+      background-color: indigo;
+      clip-path: polygon(83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%, 50% 0%);
+  }
+  84% {
+      clip-path: polygon(83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%, 50% 0%);
+  }
+  94% {
+      background-color: crimson;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%);
+  }
+}
+</style>
 
 ---
 
@@ -1190,7 +1608,7 @@ layout: quote
 
 &nbsp;
 
-1. [CSS项目](https://github.com/ManrajGrover/SingleDivProject)
+1. [纯CSS](https://github.com/ManrajGrover/SingleDivProject)
 
 单个 div 做动画。
 
