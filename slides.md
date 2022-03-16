@@ -40,6 +40,89 @@ layout: quote
 
 
 ---
+
+<section class="menu-bg-container">
+  <ul>
+    <li class="menu-bg-item">
+      <a href="#" @click="$slidev.nav.go(4)" data-text="滤镜">滤镜</a>
+    </li>
+    <li class="menu-bg-item">
+      <a href="#" @click="$slidev.nav.go(14)" data-text="混合模式">混合模式</a>
+    </li>
+    <li class="menu-bg-item">
+      <a href="#" @click="$slidev.nav.go(24)" data-text="倒影">倒影</a>
+    </li>
+    <li class="menu-bg-item">
+      <a href="#" @click="$slidev.nav.go(34)" data-text="其他">其他</a>
+    </li>
+    <li class="menu-bg-item">
+      <a href="#" @click="$slidev.nav.go(34)" data-text="资源">资源</a>
+    </li>
+  </ul>
+</section>
+
+<style scoped>
+.slidev-page-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-bg-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  height: 360px;
+  width: 400px;
+}
+.menu-bg-container ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.menu-bg-container ul li {
+  line-height: 2.3 !important;
+}
+.menu-bg-item {
+  list-style: none;
+}
+.menu-bg-item a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  border: none;
+}
+.menu-bg-item a::before {
+  content: attr(data-text);
+  letter-spacing: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  font-size: 3em;
+  color: #2196f3;
+  opacity: 0;
+  line-height: 360px;
+  transition: 0.5s;
+}
+.menu-bg-item:hover a::before {
+  opacity: 1;
+}
+html.dark .menu-bg-item a {
+  color: #fff;
+}
+</style>
+
+
+---
 layout: quote
 ---
 
@@ -51,7 +134,7 @@ layout: quote
 
 | 滤镜                                  | 释义     |
 | ------------------------------------- | -------- |
-| filter: blur(5px)                     | 模糊     |
+| filter: blur(5px)                     | 高斯模糊 |
 | filter: opacity(25%)                  | 透明度   |
 | filter: brightness(1.4)               | 亮度     |
 | filter: contrast(200%)                | 对比度   |
@@ -70,7 +153,7 @@ layout: quote
 
 ---
 
-# 模糊
+# 高斯模糊
 
 <img class="filter-blur" src="/filter-img.jpg">
 
@@ -95,6 +178,8 @@ layout: quote
 
 # 透明度
 
+&nbsp;
+
 <img class="filter-opacity" src="/filter-img.jpg">
 
 <style>
@@ -113,6 +198,15 @@ layout: quote
 </style>
 
 
+---
+
+# opacity滤镜 与 opacity属性
+
+&nbsp;
+
+两者很相似。
+
+对于opacity滤镜，一些浏览器为了提升性能，会提供硬件加速获得更好的性能。
 
 
 
@@ -322,9 +416,11 @@ html.dark .loading-glow-ring::before {
 
 ---
 
-# 灰度用途
+# grayscale 实现灰色调
 
 如清明节的时候，很多网站会换成灰色调。
+
+
 
 
 ---
@@ -745,197 +841,23 @@ html.dark .loading-text-in-ring-text {
 
 
 ---
+layout: quote
+---
+
+# 混合模式
+
+---
 
 # `<blend-mode>`
 
-混合模式
-
-
----
-
-# conic-gradient()
-
-圆锥渐变
-
-
-
 
 
 
 ---
-
-# attr()
-
-获取选择到的元素的某一HTML属性值
-
-实验中的功能。  
-目前仅支持作为字符串，用于伪元素的 content 属性。
-
-[can i use](https://caniuse.com/css-gencontent)
-
-可以作为一种 tooltip 的实现。
-
-<p data-title="这里是很长的一段提示。这里是很长的一段提示。这里是很长的一段提示。这里是很长的一段提示" class="title-after">悬浮查看提示</p>
-
-<style scoped>
-.title-after {
-  position: relative;
-}
-.title-after:hover::after {
-  content: attr(data-title);
-  font-size: 14px;
-  position: absolute;
-  z-index: 1;
-  top: 24px;
-  left: 0;
-  max-width: 160px;
-  padding: 12px;
-  border: 1px #aaa solid;
-  border-radius: 10px;
-  background-color: #ffc;
-}
-html.dark .title-after:hover::after {
-  color: #000;
-}
-</style>
-
-
+layout: quote
 ---
 
-
-<section class="menu-bg-container">
-  <ul>
-    <li class="menu-bg-item">
-      <a href="#" data-text="home">home</a>
-    </li>
-    <li class="menu-bg-item">
-      <a href="#" data-text="about">about</a>
-    </li>
-    <li class="menu-bg-item">
-      <a href="#" data-text="service">service</a>
-    </li>
-    <li class="menu-bg-item">
-      <a href="#" data-text="team">team</a>
-    </li>
-    <li class="menu-bg-item">
-      <a href="#" data-text="contact">contact</a>
-    </li>
-  </ul>
-</section>
-
-<style scoped>
-.menu-bg-container {
-  position: relative;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-.menu-bg-container ul {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  line-height: 1.5 !important;
-}
-.menu-bg-item {
-  list-style: none;
-}
-.menu-bg-item a {
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 700;
-  color: #000;
-  text-transform: uppercase;
-  border: none;
-}
-.menu-bg-item a::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-  font-size: 3em;
-  color: #2196f3;
-  opacity: 0;
-  line-height: 400px;
-  transition: 0.5s;
-}
-.menu-bg-item:hover a::before {
-  opacity: 1;
-}
-html.dark .menu-bg-item a {
-  color: #fff;
-}
-</style>
-
-
----
-
-# -webkit-text-stroke
-
-文字填充的颜色
-
-兼容性好，但是非标准属性。
-
-[can i use](https://caniuse.com/?search=-webkit-text-stroke)
-
-&nbsp;
-
-<ul class="colorful-menu">
-  <li style="--clr: #00ade1">
-    <a href="#" data-text="&nbsp;&nbsp;HOME&nbsp;">&nbsp;&nbsp;HOME&nbsp;</a>
-  </li>
-  <li style="--clr: #ffdd1c">
-    <a href="#" data-text="&nbsp;&nbsp;ABOUT&nbsp;">&nbsp;&nbsp;ABOUT&nbsp;</a>
-  </li>
-  <li style="--clr: #00dc82">
-    <a href="#" data-text="&nbsp;&nbsp;SERVICES&nbsp;">&nbsp;&nbsp;SERVICES&nbsp;</a>
-  </li>
-  <li style="--clr: #dc00d4">
-    <a href="#" data-text="&nbsp;&nbsp;CONTACT&nbsp;">&nbsp;&nbsp;CONTACT&nbsp;</a>
-  </li>
-</ul>
-
-<style scoped>
-.colorful-menu li {
-  position: relative;
-  list-style: none;
-}
-.colorful-menu li a {
-  position: relative;
-  font-size: 30px;
-  text-decoration: none;
-  overflow-wrap: normal;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
-}
-.colorful-menu li a::before {
-  content: attr(data-text);
-  position: absolute;
-  color: var(--clr);
-  z-index: 1;
-  width: 0;
-  overflow: hidden;
-  transition: 1s;
-  border-right: 8px solid var(--clr);
-  -webkit-text-stroke: 1px var(--clr);
-}
-.colorful-menu li a:hover {
-  text-decoration: none;
-}
-.colorful-menu li a:hover::before {
-  width: 100%;
-}
-html.dark .colorful-menu li a {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
-}
-</style>
+# 倒影
 
 
 ---
@@ -951,6 +873,85 @@ html.dark .colorful-menu li a {
 [巧用倒影](https://github.com/chokcoco/iCSS/issues/100)
 
 [创造艺术图案](https://yuanchuan.dev/2019/05/15/window-lattice-and-css.html)
+
+---
+
+
+<div class="loading-climb-outer-container">
+  <div class="loading-climb-container">
+    <div class="loading-climb-box">
+      <div class="loading-climb-cube"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes loading-cube-climb-boxmove {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-150px);
+  }
+}
+@keyframes loading-cube-climb-cubemove {
+  0% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(90deg);
+  }
+  65% {
+    transform: rotate(85deg);
+  }
+  70% {
+    transform: rotate(90deg);
+  }
+  75% {
+    transform: rotate(87.5deg);
+  }
+  80%, 100% {
+    transform: rotate(90deg);
+  }
+}
+.loading-climb-outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #22272e;
+  overflow: hidden;
+}
+.loading-climb-container {
+  position: relative;
+  width: 100%;
+  transform: rotate(-35deg);
+}
+.loading-climb-container .loading-climb-box { 
+  position: relative;
+  left: -150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% + 300px);
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+  animation: loading-cube-climb-boxmove 1.5s ease-in-out infinite;
+}
+.loading-climb-box .loading-climb-cube {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background-color: #03e9f4;
+  box-shadow: 0 0 5px rgba(3, 233, 244, 1),
+              0 0 25px rgba(3, 233, 244, 1),
+              0 0 50px rgba(3, 233, 244, 1),
+              0 0 100px rgba(3, 233, 244, 1),
+              0 0 200px rgba(3, 233, 244, 1);
+  transform-origin: bottom right;
+  animation: loading-cube-climb-cubemove 1.5s ease-in-out infinite;
+}
+</style>
+
 
 ---
 
@@ -1046,84 +1047,191 @@ html.dark .colorful-menu li a {
 
 
 ---
+layout: 其他
+---
+
+# 其他
 
 
-<div class="loading-climb-outer-container">
-  <div class="loading-climb-container">
-    <div class="loading-climb-box">
-      <div class="loading-climb-cube"></div>
-    </div>
-  </div>
-</div>
+---
 
-<style>
-@keyframes loading-cube-climb-boxmove {
-  0% {
-    transform: translateX(0px);
-  }
-  100% {
-    transform: translateX(-150px);
-  }
-}
-@keyframes loading-cube-climb-cubemove {
-  0% {
-    transform: rotate(0deg);
-  }
-  60% {
-    transform: rotate(90deg);
-  }
-  65% {
-    transform: rotate(85deg);
-  }
-  70% {
-    transform: rotate(90deg);
-  }
-  75% {
-    transform: rotate(87.5deg);
-  }
-  80%, 100% {
-    transform: rotate(90deg);
-  }
-}
-.loading-climb-outer-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  background-color: #22272e;
-  overflow: hidden;
-}
-.loading-climb-container {
+# attr()
+
+获取选择到的元素的某一HTML属性值
+
+实验中的功能。  
+目前仅支持作为字符串，用于伪元素的 content 属性。
+
+[can i use](https://caniuse.com/css-gencontent)
+
+可以作为一种 tooltip 的实现。
+
+<p data-title="这里是很长的一段提示。这里是很长的一段提示。这里是很长的一段提示。这里是很长的一段提示" class="title-after">悬浮查看提示</p>
+
+<style scoped>
+.title-after {
   position: relative;
-  width: 100%;
-  transform: rotate(-35deg);
 }
-.loading-climb-container .loading-climb-box { 
-  position: relative;
-  left: -150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(100% + 300px);
-  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
-  animation: loading-cube-climb-boxmove 1.5s ease-in-out infinite;
+.title-after:hover::after {
+  content: attr(data-title);
+  font-size: 14px;
+  position: absolute;
+  z-index: 1;
+  top: 24px;
+  left: 0;
+  max-width: 160px;
+  padding: 12px;
+  border: 1px #aaa solid;
+  border-radius: 10px;
+  background-color: #ffc;
 }
-.loading-climb-box .loading-climb-cube {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  background-color: #03e9f4;
-  box-shadow: 0 0 5px rgba(3, 233, 244, 1),
-              0 0 25px rgba(3, 233, 244, 1),
-              0 0 50px rgba(3, 233, 244, 1),
-              0 0 100px rgba(3, 233, 244, 1),
-              0 0 200px rgba(3, 233, 244, 1);
-  transform-origin: bottom right;
-  animation: loading-cube-climb-cubemove 1.5s ease-in-out infinite;
+html.dark .title-after:hover::after {
+  color: #000;
 }
 </style>
 
 
+---
+
+# conic-gradient()
+
+圆锥渐变
+
+
+
+
+
+
+---
+
+# -webkit-text-stroke
+
+文字填充的颜色
+
+兼容性好，但是非标准属性。
+
+[can i use](https://caniuse.com/?search=-webkit-text-stroke)
+
+&nbsp;
+
+<ul class="colorful-menu">
+  <li style="--clr: #00ade1">
+    <a href="#" data-text="&nbsp;&nbsp;HOME&nbsp;">&nbsp;&nbsp;HOME&nbsp;</a>
+  </li>
+  <li style="--clr: #ffdd1c">
+    <a href="#" data-text="&nbsp;&nbsp;ABOUT&nbsp;">&nbsp;&nbsp;ABOUT&nbsp;</a>
+  </li>
+  <li style="--clr: #00dc82">
+    <a href="#" data-text="&nbsp;&nbsp;SERVICES&nbsp;">&nbsp;&nbsp;SERVICES&nbsp;</a>
+  </li>
+  <li style="--clr: #dc00d4">
+    <a href="#" data-text="&nbsp;&nbsp;CONTACT&nbsp;">&nbsp;&nbsp;CONTACT&nbsp;</a>
+  </li>
+</ul>
+
+<style scoped>
+.colorful-menu li {
+  position: relative;
+  list-style: none;
+}
+.colorful-menu li a {
+  position: relative;
+  font-size: 30px;
+  text-decoration: none;
+  overflow-wrap: normal;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+}
+.colorful-menu li a::before {
+  content: attr(data-text);
+  position: absolute;
+  color: var(--clr);
+  z-index: 1;
+  width: 0;
+  overflow: hidden;
+  transition: 1s;
+  border-right: 8px solid var(--clr);
+  -webkit-text-stroke: 1px var(--clr);
+}
+.colorful-menu li a:hover {
+  text-decoration: none;
+}
+.colorful-menu li a:hover::before {
+  width: 100%;
+}
+html.dark .colorful-menu li a {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+}
+</style>
+
+
+
+---
+layout: quote
+---
+
+# 资源
+
+
+---
+
+# CSS 艺术家
+
+&nbsp;
+
+[css-doodle](https://github.com/css-doodle/css-doodle)
+
+[ppt](https://yuanchuan.dev/talk/generative-art-with-css/)
+
+
+---
+
+# 博客
+
+&nbsp;
+
+1. [CSS项目](https://github.com/ManrajGrover/SingleDivProject)
+
+单个 div 做动画。
+
+2. [ChokCoco](https://github.com/chokcoco/iCSS)
+
+动画为主的中文博客。
+
+3. [CSS trick](https://lhammer.cn/You-need-to-know-css/#/zh-cn/)
+
+Web开发者需要知道的CSS Tricks
+
+4. [张鑫旭博客](https://www.zhangxinxu.com/)
+
+
+---
+
+# 年度报告
+
+&nbsp;
+
+1. [JavaScript明星项目](https://risingstars.js.org/2021/zh)
+
+从 2015年 开始每年一次的 GitHub 前端项目总结。
+
+2. [CSS年度使用报告](https://2021.stateofcss.com/zh-Hans/)
+
+从 2019年 开始每年一次的调查问卷。  
+和 [JS年度使用报告](https://2021.stateofjs.com/zh-Hans/) 同团队作品。
+
+
+
+
+---
+
+# 其他网站
+
+&nbsp;
+
+1. [玩转CSS动画](https://keyframes.app/animate/)
+
+2. [缓动函数速查](https://easings.net/cn)
 
 
 
@@ -1131,19 +1239,7 @@ html.dark .colorful-menu li a {
 layout: end
 ---
 
-
----
-
-# aspect-ratio
-
-纵横比
-
-例如：  
-
-```
-aspect-ratio: 16 / 9;
-```
-
+# THANK YOU
 
 ---
 layout: quote
@@ -1269,78 +1365,9 @@ Block, element, modifier。块层、元素层、修饰符层。
 layout: quote
 ---
 
-# 资源
-
-
----
-
-# CSS 艺术家
-
-&nbsp;
-
-[css-doodle](https://github.com/css-doodle/css-doodle)
-
-[ppt](https://yuanchuan.dev/talk/generative-art-with-css/)
-
-
----
-
-# 有趣的动画项目
-
-&nbsp;
-
-1. [CSS项目](https://github.com/ManrajGrover/SingleDivProject)
-
-单个 div 做动画。
-
-2. [ChokCoco](https://github.com/chokcoco/iCSS)
-
-动画为主的中文博客。
-
-3. [CSS trick](https://lhammer.cn/You-need-to-know-css/#/zh-cn/)
-
-Web开发者需要知道的CSS Tricks
-
-4. [张鑫旭博客](https://www.zhangxinxu.com/)
-
-
----
-
-# 年度报告
-
-&nbsp;
-
-1. [JavaScript明星项目](https://risingstars.js.org/2021/zh)
-
-从 2015年 开始每年一次的 GitHub 前端项目总结。
-
-2. [CSS年度使用报告](https://2021.stateofcss.com/zh-Hans/)
-
-从 2019年 开始每年一次的调查问卷。  
-和 [JS年度使用报告](https://2021.stateofjs.com/zh-Hans/) 同团队作品。
-
-
-
-
----
-
-# 其他网站
-
-&nbsp;
-
-1. [玩转CSS动画](https://keyframes.app/animate/)
-
-2. [缓动函数速查](https://easings.net/cn)
-
-
----
-layout: quote
----
-
 # 总结
 
 
 木匠需要每年去学习一种新的，更好的方式去锯木头吗？  
 画家会因为自己仍然在使用油漆作画而感到自己落伍了吗？  
 还是说只有我们前端开发者才能体验到前端领域的不断变化？
-
