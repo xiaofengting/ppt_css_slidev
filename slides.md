@@ -10,7 +10,7 @@ title: CSS特性
 
 &nbsp;
 
-CSS 滤镜、混合模式、倒影
+CSS 滤镜、混合模式、倒影、遮罩
 
 &nbsp;
 
@@ -55,10 +55,13 @@ layout: quote
       <a href="#" @click="$slidev.nav.go(37)" data-text="倒影">倒影</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(42)" data-text="其他">其他</a>
+      <a href="#" @click="$slidev.nav.go(42)" data-text="遮罩">遮罩</a>
     </li>
     <li class="menu-bg-item">
-      <a href="#" @click="$slidev.nav.go(49)" data-text="资源">资源</a>
+      <a href="#" @click="$slidev.nav.go(49)" data-text="其他">其他</a>
+    </li>
+    <li class="menu-bg-item">
+      <a href="#" @click="$slidev.nav.go(56)" data-text="资源">资源</a>
     </li>
   </ul>
 </section>
@@ -161,6 +164,7 @@ layout: quote
 <style>
 .filter-opacity {
   width: 60%;
+  margin: auto;
   animation: filter-opacity 3s linear infinite alternate;
 }
 @keyframes filter-opacity {
@@ -199,6 +203,7 @@ layout: quote
 <style>
 .filter-brightness {
   width: 60%;
+  margin: auto;
   animation: filter-brightness 5s linear infinite alternate;
 }
 @keyframes filter-brightness {
@@ -271,6 +276,7 @@ html.dark .brightness-ui-button {
 <style>
 .filter-contrast {
   width: 60%;
+  margin: auto;
   animation: filter-contrast 5s linear infinite alternate;
 }
 @keyframes filter-contrast {
@@ -300,6 +306,7 @@ html.dark .brightness-ui-button {
 <style>
 .filter-saturate {
   width: 60%;
+  margin: auto;
   animation: filter-saturate 5s linear infinite alternate;
 }
 @keyframes filter-saturate {
@@ -330,6 +337,7 @@ html.dark .brightness-ui-button {
 <style>
 .filter-hue-rotate {
   width: 60%;
+  margin: auto;
   animation: filter-hue-rotate 5s linear infinite alternate;
 }
 @keyframes filter-hue-rotate {
@@ -348,6 +356,8 @@ html.dark .brightness-ui-button {
 
 # hue-rotate 实现彩色字
 
+&nbsp;
+
 <p class="color-font">这是一行彩色文字</p>
 
 <style>
@@ -360,6 +370,7 @@ html.dark .brightness-ui-button {
   }
 }
 .color-font {
+  text-align: center;
   height: 160px;
   line-height: 160px;
   font-size: 60px;
@@ -379,7 +390,7 @@ html.dark .brightness-ui-button {
 
 发光效果使用 blur 滤镜。
 
-<div class="loading-container" style="height: 250px;">
+<div class="loading-container" style="height: 250px; margin-top: 50px;">
   <div class="loading-glow-ring"></div>
 </div>
 
@@ -446,6 +457,7 @@ html.dark .loading-glow-ring::before {
 <style>
 .filter-invert {
   width: 60%;
+  margin: auto;
   animation: filter-invert 5s linear infinite alternate;
 }
 @keyframes filter-invert {
@@ -475,6 +487,7 @@ html.dark .loading-glow-ring::before {
 <style>
 .filter-grayscale {
   width: 60%;
+  margin: auto;
   animation: filter-grayscale 5s linear infinite alternate;
 }
 @keyframes filter-grayscale {
@@ -496,8 +509,25 @@ html.dark .loading-glow-ring::before {
 
 1. 如清明节的时候，知乎等很多网站首页会换成灰色调。
 
-2. 也可用于禁用按钮。
+2. 表示彩色图片的未选中状态
 
+<img
+  decoding="async"
+  class="wish__detail-img2"
+  src="/200.png"
+  alt="桃花妖"
+/>
+
+<style>
+.wish__detail-img2 {
+  margin: auto;
+  filter: grayscale(100%);
+  translation: all 1s ease;
+}
+.wish__detail-img2:hover {
+  filter: grayscale(0);
+}
+</style>
 
 ---
 
@@ -514,6 +544,7 @@ html.dark .loading-glow-ring::before {
 <style>
 .filter-sepia {
   width: 60%;
+  margin: auto;
   animation: filter-sepia 5s linear infinite alternate;
 }
 @keyframes filter-sepia {
@@ -556,6 +587,7 @@ html.dark .loading-glow-ring::before {
 <style>
 .filter-blur {
   width: 60%;
+  margin: auto;
   animation: filter-blur 5s linear infinite alternate;
 }
 @keyframes filter-blur {
@@ -575,17 +607,18 @@ html.dark .loading-glow-ring::before {
 
 &nbsp;
 
-复制本样式到外层元素，如body：`filter: blur(3px) contrast(10);`
+<!-- 复制本样式到外层元素，如body：`filter: blur(3px) contrast(10);` -->
 
-<div class="blur-drop-water">hello world</div>
+<div class="blur-drop-water"></div>
 
 <style>
 .blur-drop-water {
+  filter: blur(2px) contrast(10);
   position: relative;
-  width: 640px;
+  width: 600px;
   height: 106px;
   color: #fff;
-  font-size: 124px;
+  font-size: 100px;
   text-align: center;
   margin: 100px auto;
   border-bottom: 10px solid #fff;
@@ -610,12 +643,12 @@ html.dark .loading-glow-ring::before {
 @keyframes blur-drop-water-move {
   80% {        
     bottom : -30px;
-    transform: translate(623px, 0);
+    transform: translate(583px, 0);
   } 93% {
-    transform: translate(623px, 3px);
+    transform: translate(583px, 3px);
     opacity: 1;
   } 100% {
-    transform: translate(623px, 150px);
+    transform: translate(583px, 150px);
     opacity: 0;
   }
 }
@@ -649,6 +682,7 @@ html.dark .loading-glow-ring::before {
 .drop-shadow-svg {
   width: 200px;
   animation: drop-shadow-svg 5s linear infinite alternate;
+  margin: auto;
 }
 @keyframes drop-shadow-svg {
   0% {
@@ -839,6 +873,7 @@ drop-shadow不能叠加，没有 inset
   height: 320px;
   width: 320px;
   overflow: hidden;
+  margin: auto;
 }
 .loading-text-in-ring {
   width: 200px;
@@ -915,7 +950,7 @@ html.dark .loading-text-in-ring-text {
   position: relative;
   width: 120px;
   height: 120px;
-  margin: 50px 100px 100px;
+  margin: auto;
 }
 .loading-glass-circle span {
   position: absolute;
@@ -975,6 +1010,7 @@ html.dark .loading-text-in-ring-text {
   position: relative;
   width: 180px;
   height: 180px;
+  margin: auto;
 }
 .loading-glass-circle-2 span:nth-child(1) {
   position: absolute;
@@ -1387,6 +1423,125 @@ mask-box-image：用于反射的蒙版。
   filter: hue-rotate(90deg);
 }
 </style>
+
+
+---
+layout: quote
+---
+
+# 遮罩
+
+
+---
+
+# mask
+
+遮罩
+
+通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域。
+
+```
+mask: url(mask.png);                       /* 使用位图来做遮罩 */
+mask: url(masks.svg#star);                 /* 使用 SVG 图形中的形状来做遮罩 */
+mask: linear-gradient(#000, transparent)   /* 使用渐变来做遮罩 */
+```
+
+[can i use](https://caniuse.com/?search=mask)
+
+---
+
+# mask 基本使用
+
+&nbsp;
+
+<div class="mask-1"></div>
+
+<style>
+.mask-1 {
+  margin: auto;
+  width: 500px;
+  height: 300px;
+  background: url(/yasuo.jpg) no-repeat;
+  background-size: cover;
+  mask: linear-gradient(90deg, transparent, #000);
+  -webkit-mask: linear-gradient(90deg, transparent, #000);
+}
+</style>
+
+
+---
+
+# mask 图片裁剪
+
+&nbsp;
+
+<div class="mask-2"></div>
+
+<style>
+.mask-2 {
+  margin: auto;
+  width: 500px;
+  height: 300px;
+  background: url(/yasuo.jpg) no-repeat;
+  background-size: cover;
+  -webkit-mask:
+    linear-gradient(135deg, transparent 45px, #fff 0)
+    top left,
+    linear-gradient(-135deg, transparent 45px, #fff 0)
+    top right,
+    linear-gradient(-45deg, transparent 45px, #fff 0)
+    bottom right,
+    linear-gradient(45deg, transparent 45px, #fff 0)
+    bottom left;
+  -webkit-mask-size: 50% 50%;
+  -webkit-mask-repeat: no-repeat;
+}
+</style>
+
+
+---
+
+# mask 实现切换
+
+
+&nbsp;
+
+<img class="margin-auto" src="mask-move1.gif" />
+
+<style>
+.margin-auto {
+  margin: auto;
+}
+</style>
+
+
+
+---
+
+# mask 实现转场
+
+&nbsp;
+
+<img class="margin-auto" src="mask-move2.gif" />
+
+<style>
+.margin-auto {
+  margin: auto;
+}
+</style>
+
+
+---
+
+# 视频弹幕人物遮罩过滤
+
+&nbsp;
+
+在弹幕网站，当人物与弹幕出现在一起的时候，弹幕不遮挡人物。
+
+原理：以指定图片作为蒙版，将人物遮掉。
+
+[codepen](https://codepen.io/Chokcoco/pen/MWbyjoX)
 
 
 ---
