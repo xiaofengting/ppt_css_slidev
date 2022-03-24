@@ -18,6 +18,23 @@ CSS 滤镜、混合模式、倒影、遮罩
 
 
 
+---
+
+### 推荐幻灯片制作工具 Slidev
+
+Vue 核心开发组成员 antfu 开源项目。
+
+对前端开发者友好。
+
+1. 支持 Markdown 语法
+2. 支持内联的 HTML、Vue 组件。
+3. 技术栈使用 Vite、Vue 3、Windi CSS，每个改变会实时展示到幻灯片上。
+4. 适合代码展示。
+5. 可以导出 PDF、PNG
+6. 对应的 VScode 插件，可以在不打开网页的情况下，预览幻灯片。
+7. 中文文档，学习成本低。
+
+文档地址：https://sli.dev
 
 
 ---
@@ -35,9 +52,9 @@ layout: quote
 
 
 现代浏览器的版本更新和迭代是非常迅速的。  
+今年 CSS 嵌套也有了进展。  
 只要不需要兼容IE和Edge，可以利用强大的新特性写出很棒的效果。
 
-今天 CSS 嵌套也有了进展，可能是编写CSS方式发生根本性改变的一年。
 
 
 
@@ -78,8 +95,8 @@ layout: quote
   justify-content: center;
   align-items: center;
   z-index: 1;
-  height: 360px;
-  width: 400px;
+  height: 420px;
+  margin: auto;
 }
 .menu-bg-container ul {
   display: flex;
@@ -115,7 +132,7 @@ layout: quote
   font-size: 3em;
   color: #2196f3;
   opacity: 0;
-  line-height: 360px;
+  line-height: 420px;
   transition: 0.5s;
 }
 .menu-bg-item:hover a::before {
@@ -529,6 +546,10 @@ html.dark .loading-glow-ring::before {
 }
 </style>
 
+<!--
+见抽卡小游戏
+-->
+
 ---
 
 # sepia
@@ -609,6 +630,11 @@ html.dark .loading-glow-ring::before {
 
 <!-- 复制本样式到外层元素，如body：`filter: blur(3px) contrast(10);` -->
 
+<!-- 
+巧用CSS filter  
+https://juejin.cn/post/7002829486806794276#heading-1
+ -->
+
 <div class="blur-drop-water"></div>
 
 <style>
@@ -674,37 +700,6 @@ html.dark .loading-glow-ring::before {
 &nbsp;
 
 可以给非透明部分（alpha通道）增加阴影效果。
-
-<img class="drop-shadow-svg" src="/firefox-logo.svg">
-
-
-<style>
-.drop-shadow-svg {
-  width: 200px;
-  animation: drop-shadow-svg 5s linear infinite alternate;
-  margin: auto;
-}
-@keyframes drop-shadow-svg {
-  0% {
-    filter: drop-shadow(0 0 10rem crimson);
-  }
-  20% {
-    filter: drop-shadow(0 0 10rem #4444dd);
-  }
-  40% {
-    filter: drop-shadow(10rem 0 10rem #4444dd);
-  }
-  60% {
-    filter: drop-shadow(10rem 10rem 10rem rgb(160, 0, 210));
-  }
-  80% {
-    filter: drop-shadow(0rem 10rem 10rem #4444dd);
-  }
-  100% {
-    filter: drop-shadow(0rem 0rem 10rem crimson);
-  }
-}
-</style>
 
 
 ---
@@ -907,7 +902,6 @@ html.dark .loading-text-in-ring-text {
   box-shadow: 0 0 5px rgba(255, 255, 255, .2);
 }
 </style>
-
 
 ---
 
@@ -1564,7 +1558,7 @@ layout: quote
 参数同 径向渐变 radial-gradient()、线形渐变 linear-gradient()
 
 
---- 
+---
 
 # conic-gradient() 实现饼状图
 
