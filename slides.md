@@ -1500,7 +1500,7 @@ mask: linear-gradient(#000, transparent)   /* 使用渐变来做遮罩 */
 
 &nbsp;
 
-<img class="margin-auto" src="mask-move1.gif" />
+<img class="margin-auto" src="/mask-move1.gif" />
 
 <style>
 .margin-auto {
@@ -1516,7 +1516,7 @@ mask: linear-gradient(#000, transparent)   /* 使用渐变来做遮罩 */
 
 &nbsp;
 
-<img class="margin-auto" src="mask-move2.gif" />
+<img class="margin-auto" src="/mask-move2.gif" />
 
 <style>
 .margin-auto {
