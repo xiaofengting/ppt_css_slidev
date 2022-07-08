@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "slidev build --base /css_ppt/",
+    "build": "slidev build --base /ppt_css_slidev/",
     "dev": "slidev --open",
     "export": "slidev export"
   },
